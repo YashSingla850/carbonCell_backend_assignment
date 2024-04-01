@@ -1,5 +1,8 @@
 package com.backendAssignment.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Entries {
+
 	private String API;
 	private String Description;
 	private String Auth;
@@ -15,6 +19,16 @@ public class Entries {
 	private String Cors;
 	private String Link;
 	private String Category;
+
+	public Entries(JSONObject jsonObject) throws JSONException {
+		this.API = jsonObject.getString("API");
+		this.Description = jsonObject.getString("Description");
+		this.Auth = jsonObject.getString("Auth");
+		this.HTTPS = jsonObject.getBoolean("HTTPS");
+		this.Cors = jsonObject.getString("Cors");
+		this.Link = jsonObject.getString("Link");
+		this.Category = jsonObject.getString("Category");
+	}
 
 }
 
